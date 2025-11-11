@@ -3,6 +3,7 @@ mod create_tile_pool;
 mod find_highest_tile_index;
 mod find_starter_tile;
 mod get_tile_count;
+mod tile_is_double;
 
 use crate::{
     create_player_hand::create_player_hand, create_tile_pool::create_tile_pool,
