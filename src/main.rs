@@ -5,10 +5,10 @@ mod find_starter_tile;
 mod get_tile_count;
 mod show_tiles;
 mod tile_is_double;
-
+mod types;
 use crate::{
     create_player_hand::create_player_hand, create_tile_pool::create_tile_pool,
-    find_starter_tile::find_starter_tile, show_tiles::show_tiles,
+    find_starter_tile::find_starter_tile, show_tiles::show_tiles, types::Tile,
 };
 
 fn main() {
