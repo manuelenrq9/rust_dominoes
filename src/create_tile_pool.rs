@@ -1,4 +1,6 @@
-pub fn create_tile_pool() -> Vec<[i32; 2]> {
+use crate::types::Hand;
+
+pub fn create_tile_pool() -> Hand {
     return vec![
         [0, 0],
         [0, 1],

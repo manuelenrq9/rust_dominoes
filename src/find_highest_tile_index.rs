@@ -1,6 +1,6 @@
-use crate::{get_tile_count::get_tile_count, tile_is_double::tile_is_double};
+use crate::{get_tile_count::get_tile_count, tile_is_double::tile_is_double, types::Hand};
 
-pub fn find_highest_tile_index(hand: &Vec<[i32; 2]>) -> usize {
+pub fn find_highest_tile_index(hand: &Hand) -> usize {
     let mut highest_tile_count: i32 = 0;
     let mut tile_count: i32;
     let mut current_tile_index: usize = 0;

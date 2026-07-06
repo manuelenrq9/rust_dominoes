@@ -1,3 +1,5 @@
-pub fn show_tiles(tiles: &Vec<[i32; 2]>) {
+use crate::types::Hand;
+
+pub fn show_tiles(tiles: &Hand) {
     println!("{:?}", tiles);
 }
