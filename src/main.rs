@@ -1,3 +1,4 @@
+mod copy_edges;
 mod create_player_hand;
 mod create_tile_pool;
 mod find_highest_tile_index;
@@ -8,6 +9,7 @@ mod take_tile;
 mod tile_is_double;
 mod types;
 use crate::{
+    copy_edges::copy_edges,
     create_player_hand::create_player_hand,
     create_tile_pool::create_tile_pool,
     find_starter_tile::find_starter_tile,
@@ -31,12 +33,18 @@ fn main() {
     println!("=================================================================================");
     println!("tile pool: ");
     show_tiles(&tile_pool);
+    println!("edges: ");
+    let edges1: Tile = copy_edges(tile_pool);
+    println!("{:?}", edges1);
     println!("=================================================================================");
     println!("=================================================================================");
     println!("=================================================================================");
     let table: Hand = vec![find_starter_tile(&mut player_hand, &mut cpu_hand)];
     println!("table: ");
     show_tiles(&table);
+    println!("edges: ");
+    let edges2: Tile = copy_edges(table);
+    println!("{:?}", edges2);
     println!("=================================================================================");
     println!("player hand: ");
     show_tiles(&player_hand);
