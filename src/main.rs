@@ -4,6 +4,7 @@ mod create_tile_pool;
 mod find_highest_tile_index;
 mod find_starter_tile;
 mod get_tile_count;
+mod player_turn;
 mod show_tiles;
 mod take_tile;
 mod tile_is_double;
@@ -13,6 +14,7 @@ use crate::{
     create_player_hand::create_player_hand,
     create_tile_pool::create_tile_pool,
     find_starter_tile::find_starter_tile,
+    player_turn::player_turn,
     show_tiles::show_tiles,
     types::{Hand, Tile},
 };
@@ -51,4 +53,6 @@ fn main() {
     println!("=================================================================================");
     println!("cpu hand: ");
     show_tiles(&cpu_hand);
+    println!("your turn!:");
+    player_turn(&mut player_hand);
 }
