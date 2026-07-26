@@ -4,6 +4,7 @@ mod create_tile_pool;
 mod find_highest_tile_index;
 mod find_starter_tile;
 mod get_tile_count;
+mod place_tile;
 mod player_turn;
 mod show_tiles;
 mod take_tile;

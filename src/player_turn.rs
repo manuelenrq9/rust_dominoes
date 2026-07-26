@@ -6,8 +6,7 @@ pub fn player_turn(hand: &mut Hand) {
     for (i, tile) in hand.iter().enumerate() {
         print!("{}:{:?}  ", i, tile);
     }
-    print!("t:[take a tile]");
-    println!();
+    println!("t:[take a tile]");
 
     let mut entrada = String::new();
     io::stdin()
