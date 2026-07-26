@@ -1,8 +1,11 @@
 use std::{io, print, println};
 
-use crate::types::Hand;
+use crate::{
+    place_tile::place_tile,
+    types::{Hand, Tile},
+};
 
-pub fn player_turn(hand: &mut Hand) {
+pub fn player_turn(hand: &mut Hand, table: &mut Hand, edges: &Tile) {
     for (i, tile) in hand.iter().enumerate() {
         print!("{}:{:?}  ", i, tile);
     }
@@ -13,5 +16,10 @@ pub fn player_turn(hand: &mut Hand) {
         .read_line(&mut entrada)
         .expect("Error al leer la linea");
     let entrada = entrada.trim();
-    println!("ingresaste: {}", entrada)
+    println!("ingresaste: {}", entrada);
+
+    match entrada.parse::<usize>() {
+        Ok(number) => place_tile(&mut hand.remove(number), edges, table),
+        Err(e) => println!("Error parsing: {}", e),
+    }
 }

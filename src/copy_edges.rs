@@ -1,6 +1,6 @@
 use crate::types::{Hand, Tile};
 
-pub fn copy_edges(table: Hand) -> Tile {
+pub fn copy_edges(table: &Hand) -> Tile {
     let first = match table.first() {
         Some(value) => *value,
         None => [0, 0],

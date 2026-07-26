@@ -37,16 +37,16 @@ fn main() {
     println!("tile pool: ");
     show_tiles(&tile_pool);
     println!("edges: ");
-    let edges1: Tile = copy_edges(tile_pool);
+    let edges1: Tile = copy_edges(&tile_pool);
     println!("{:?}", edges1);
     println!("=================================================================================");
     println!("=================================================================================");
     println!("=================================================================================");
-    let table: Hand = vec![find_starter_tile(&mut player_hand, &mut cpu_hand)];
+    let mut table: Hand = vec![find_starter_tile(&mut player_hand, &mut cpu_hand)];
     println!("table: ");
     show_tiles(&table);
     println!("edges: ");
-    let edges2: Tile = copy_edges(table);
+    let edges2: Tile = copy_edges(&table);
     println!("{:?}", edges2);
     println!("=================================================================================");
     println!("player hand: ");
@@ -55,5 +55,8 @@ fn main() {
     println!("cpu hand: ");
     show_tiles(&cpu_hand);
     println!("your turn!:");
-    player_turn(&mut player_hand);
+    player_turn(&mut player_hand, &mut table, &edges2);
+    show_tiles(&player_hand);
+    ("=================================================================================");
+    show_tiles(&table);
 }
