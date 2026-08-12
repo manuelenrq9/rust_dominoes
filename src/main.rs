@@ -55,7 +55,7 @@ fn main() {
     println!("cpu hand: ");
     show_tiles(&cpu_hand);
     println!("your turn!:");
-    player_turn(&mut player_hand, &mut table, &edges2);
+    player_turn(&mut player_hand, &mut table, &edges2, &mut tile_pool);
     show_tiles(&player_hand);
     ("=================================================================================");
     show_tiles(&table);

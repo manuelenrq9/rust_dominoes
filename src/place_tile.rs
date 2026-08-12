@@ -2,7 +2,7 @@ use crate::types::{Hand, Tile};
 
 pub fn place_tile(player_tile: &mut Tile, edges: &Tile, table: &mut Hand) {
     {
-        'externo: for (i, edges_value) in edges.iter().enumerate() {
+        'external: for (i, edges_value) in edges.iter().enumerate() {
             for (j, player_value) in player_tile.iter().enumerate() {
                 if edges_value == player_value {
                     if i == j {
@@ -13,7 +13,7 @@ pub fn place_tile(player_tile: &mut Tile, edges: &Tile, table: &mut Hand) {
                     } else {
                         table.push(*player_tile);
                     }
-                    break 'externo;
+                    break 'external;
                 }
             }
         }
