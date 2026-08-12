@@ -1,3 +1,4 @@
+mod can_play_tile;
 mod copy_edges;
 mod create_player_hand;
 mod create_tile_pool;

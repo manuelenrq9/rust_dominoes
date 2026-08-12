@@ -1,6 +1,7 @@
 use std::{io, print, println};
 
 use crate::{
+    can_play_tile::can_play_tile,
     place_tile::place_tile,
     types::{Hand, Tile},
 };
@@ -8,10 +9,17 @@ use crate::{
 pub fn player_turn(hand: &mut Hand, table: &mut Hand, edges: &Tile, pool: &mut Hand) {
     let mut tile_placed: bool = false;
     while !tile_placed {
+        let can_draw = hand.iter().all(|tile| !can_play_tile(tile, edges));
+
         for (i, tile) in hand.iter().enumerate() {
             print!("{}:{:?}  ", i, tile);
         }
-        println!("t:[take a tile]");
+
+        if can_draw {
+            println!("t:[take a tile]");
+        } else {
+            println!("Choose a playable tile.");
+        }
 
         let mut input = String::new();
         io::stdin()
@@ -22,8 +30,14 @@ pub fn player_turn(hand: &mut Hand, table: &mut Hand, edges: &Tile, pool: &mut H
 
         match input {
             "t" => {
-                if pool.is_empty() {
+                if !can_draw {
+                    println!("You may only draw when no playable tile exists.");
+                } else if pool.is_empty() {
                     println!("No tiles left in the pool to draw.");
+                    println!(
+                        "Turn passes because there are no playable tiles and no tiles left to draw."
+                    );
+                    return;
                 } else {
                     let drawn_tile = pool.pop().unwrap();
                     println!("You drew {:?}", drawn_tile);
@@ -33,8 +47,14 @@ pub fn player_turn(hand: &mut Hand, table: &mut Hand, edges: &Tile, pool: &mut H
             _ => match input.parse::<usize>() {
                 Ok(number) => {
                     if number < hand.len() {
-                        tile_placed = true;
-                        place_tile(&mut hand.remove(number), edges, table);
+                        if can_play_tile(&hand[number], edges) {
+                            tile_placed = true;
+                            place_tile(&mut hand.remove(number), edges, table);
+                        } else {
+                            println!(
+                                "That tile cannot be placed on the board. Choose another tile."
+                            );
+                        }
                     } else {
                         println!(
                             "Index out of range. Choose a number from 0 to {}.",
