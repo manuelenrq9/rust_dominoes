@@ -57,18 +57,32 @@ fn main() {
     println!("=================================================================================");
     println!("cpu hand: ");
     show_tiles(&cpu_hand);
-    println!("your turn!:");
-    player_turn(&mut player_hand, &mut table, &edges2, &mut tile_pool);
-    show_tiles(&player_hand);
-    // CPU turn
-    let edges_after_player: Tile = copy_edges(&table);
-    println!("cpu's turn:");
-    cpu_turn(
-        &mut cpu_hand,
-        &mut table,
-        &edges_after_player,
-        &mut tile_pool,
-    );
-    ("================================================================================");
-    show_tiles(&table);
+    // Game loop: alternate turns until one hand is empty
+    loop {
+        // Player turn
+        println!("your turn!:");
+        let edges_before = copy_edges(&table);
+        player_turn(&mut player_hand, &mut table, &edges_before, &mut tile_pool);
+        show_tiles(&player_hand);
+        if player_hand.is_empty() {
+            println!("You win! Player ran out of tiles.");
+            break;
+        }
+
+        // CPU turn
+        let edges_after_player: Tile = copy_edges(&table);
+        println!("cpu's turn:");
+        cpu_turn(
+            &mut cpu_hand,
+            &mut table,
+            &edges_after_player,
+            &mut tile_pool,
+        );
+        ("================================================================================");
+        show_tiles(&table);
+        if cpu_hand.is_empty() {
+            println!("CPU wins! CPU ran out of tiles.");
+            break;
+        }
+    }
 }
