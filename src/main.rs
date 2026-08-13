@@ -1,5 +1,6 @@
 mod can_play_tile;
 mod copy_edges;
+mod cpu_turn;
 mod create_player_hand;
 mod create_tile_pool;
 mod find_highest_tile_index;
@@ -13,6 +14,7 @@ mod tile_is_double;
 mod types;
 use crate::{
     copy_edges::copy_edges,
+    cpu_turn::cpu_turn,
     create_player_hand::create_player_hand,
     create_tile_pool::create_tile_pool,
     find_starter_tile::find_starter_tile,
@@ -58,6 +60,15 @@ fn main() {
     println!("your turn!:");
     player_turn(&mut player_hand, &mut table, &edges2, &mut tile_pool);
     show_tiles(&player_hand);
-    ("=================================================================================");
+    // CPU turn
+    let edges_after_player: Tile = copy_edges(&table);
+    println!("cpu's turn:");
+    cpu_turn(
+        &mut cpu_hand,
+        &mut table,
+        &edges_after_player,
+        &mut tile_pool,
+    );
+    ("================================================================================");
     show_tiles(&table);
 }
