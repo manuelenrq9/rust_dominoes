@@ -49,7 +49,9 @@ pub fn player_turn(hand: &mut Hand, table: &mut Hand, edges: &Tile, pool: &mut H
                     if number < hand.len() {
                         if can_play_tile(&hand[number], edges) {
                             tile_placed = true;
-                            place_tile(&mut hand.remove(number), edges, table);
+                            let mut tile = hand.remove(number);
+                            place_tile(&mut tile, edges, table);
+                            println!("You played {:?}", tile);
                         } else {
                             println!(
                                 "That tile cannot be placed on the board. Choose another tile."
@@ -62,7 +64,7 @@ pub fn player_turn(hand: &mut Hand, table: &mut Hand, edges: &Tile, pool: &mut H
                         );
                     }
                 }
-                Err(e) => println!("Error parsing: {}", e),
+                Err(_) => println!("Invalid input. Enter a tile index or 't' to draw."),
             },
         }
     }
