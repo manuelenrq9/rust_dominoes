@@ -12,19 +12,22 @@ pub fn cpu_turn(hand: &mut Hand, table: &mut Hand, edges: &Tile, pool: &mut Hand
         }
     }
 
-    // No playable tile in hand -> draw if possible
-    if pool.is_empty() {
-        println!("CPU cannot play and the pool is empty. CPU passes.");
-        return;
-    }
+    // No playable tile in hand -> keep drawing until playable or pool empty
+    loop {
+        if pool.is_empty() {
+            println!("CPU cannot play and the pool is empty. CPU passes.");
+            return;
+        }
 
-    let mut drawn_tile = pool.pop().unwrap();
-    println!("CPU drew {:?}", drawn_tile);
-    if can_play_tile(&drawn_tile, edges) {
-        place_tile(&mut drawn_tile, edges, table);
-        println!("CPU played drawn tile {:?}", drawn_tile);
-    } else {
-        hand.push(drawn_tile);
-        println!("CPU could not play the drawn tile and ends its turn.");
+        let mut drawn_tile = pool.pop().unwrap();
+        println!("CPU drew {:?}", drawn_tile);
+        if can_play_tile(&drawn_tile, edges) {
+            place_tile(&mut drawn_tile, edges, table);
+            println!("CPU played drawn tile {:?}", drawn_tile);
+            return;
+        } else {
+            hand.push(drawn_tile);
+            // continue drawing
+        }
     }
 }
