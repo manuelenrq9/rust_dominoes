@@ -1,4 +1,4 @@
-use crate::types::{Hand, Tile};
+use crate::types::Hand;
 
 pub fn decide_by_pips(player_hand: &Hand, cpu_hand: &Hand) {
     let sum_pips = |h: &Hand| -> i32 { h.iter().map(|t| t[0] + t[1]).sum() };

@@ -1,4 +1,4 @@
-use crate::types::{Hand, Tile};
+use crate::types::Hand;
 
 pub fn decide_by_tiles(player_hand: &Hand, cpu_hand: &Hand) -> bool {
     // Decide winner: fewest remaining tiles wins; if tied, lowest pip total wins; otherwise tie

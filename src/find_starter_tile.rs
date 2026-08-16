@@ -12,7 +12,7 @@ pub fn find_starter_tile(hand1: &mut Hand, hand2: &mut Hand) -> (Tile, bool) {
     let tile1: &Tile = &hand1[index1];
     let tile2: &Tile = &hand2[index2];
     let starter_tile: [i32; 2];
-    let mut starter_was_hand1: bool = false;
+    let starter_was_hand1: bool;
 
     if (tile_is_double(tile1) && tile_is_double(tile2))
         || (!tile_is_double(tile1) && !tile_is_double(tile2))

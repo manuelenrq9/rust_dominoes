@@ -1,6 +1,6 @@
 use crate::decide_by_pips::decide_by_pips;
 use crate::decide_by_tiles::decide_by_tiles;
-use crate::types::{Hand, Tile};
+use crate::types::Hand;
 
 pub fn decide_winner(player_hand: &Hand, cpu_hand: &Hand) {
     // Decide winner: fewest remaining tiles wins; if tied, lowest pip total wins; otherwise tie
