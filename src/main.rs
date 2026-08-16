@@ -1,12 +1,17 @@
 mod can_play_tile;
+mod check_blocked_game;
 mod copy_edges;
 mod cpu_turn;
 mod create_player_hand;
 mod create_tile_pool;
+mod decide_by_pips;
+mod decide_by_tiles;
+mod decide_winner;
 mod find_highest_tile_index;
 mod find_starter_tile;
 mod get_tile_count;
 mod place_tile;
+mod player_can_play;
 mod player_turn;
 mod show_board;
 mod show_tiles;
@@ -14,6 +19,7 @@ mod take_tile;
 mod tile_is_double;
 mod types;
 use crate::{
+    check_blocked_game::check_blocked_game,
     copy_edges::copy_edges,
     cpu_turn::cpu_turn,
     create_player_hand::create_player_hand,
@@ -44,6 +50,11 @@ fn main() {
     loop {
         // Display current state at the start of each turn
         show_board(&table, &player_hand, &cpu_hand);
+
+        // Check for blocked game: pool empty and neither player can play
+        if check_blocked_game(&player_hand, &cpu_hand, &tile_pool, &table) {
+            break;
+        }
 
         if player_turn_next {
             // Player turn

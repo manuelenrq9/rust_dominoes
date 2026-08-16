@@ -3,13 +3,14 @@ use std::{io, print, println};
 use crate::{
     can_play_tile::can_play_tile,
     place_tile::place_tile,
+    player_can_play::player_can_play,
     types::{Hand, Tile},
 };
 
 pub fn player_turn(hand: &mut Hand, table: &mut Hand, edges: &Tile, pool: &mut Hand) {
     let mut tile_placed: bool = false;
     while !tile_placed {
-        let can_draw = hand.iter().all(|tile| !can_play_tile(tile, edges));
+        let can_draw = !player_can_play(hand, edges);
 
         for (i, tile) in hand.iter().enumerate() {
             print!("{}:{:?}  ", i, tile);
