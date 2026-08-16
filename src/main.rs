@@ -35,8 +35,6 @@ fn main() {
     println!("Starter tile placed on the table.");
     println!("Your hand:");
     show_tiles(&player_hand);
-    println!("CPU hand (hidden during final game):");
-    show_tiles(&cpu_hand);
     println!("Initial table:");
     show_tiles(&table);
     // Determine who plays next: the player who DID NOT have the starter plays next

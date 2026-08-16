@@ -26,7 +26,6 @@ pub fn player_turn(hand: &mut Hand, table: &mut Hand, edges: &Tile, pool: &mut H
             .read_line(&mut input)
             .expect("Error al leer la linea");
         let input = input.trim();
-        println!("ingresaste: {}", input);
 
         match input {
             "t" => {

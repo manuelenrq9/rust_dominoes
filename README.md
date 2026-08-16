@@ -14,7 +14,7 @@ Overview
 
 Controls
 --------
-- On your turn the program prints three sections: the table, your hand, and the CPU hand (visible for debugging).
+- On your turn the program prints two sections: the table and, your hand.
 - To play a tile enter its index (the number printed to the left of each tile).
 - If you have no playable tiles, type `t` to draw from the pool. Drawing repeats automatically until you draw a playable tile or the pool is empty.
 
@@ -42,7 +42,6 @@ Files of interest
 Development notes
 -----------------
 - The CPU behaviour is intentionally simple (plays the first playable tile it finds).
-- The CPU hand is printed for debugging; you can hide it in `main.rs` when you want a final UX.
 
 Contributing
 ------------
