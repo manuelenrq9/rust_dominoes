@@ -7,6 +7,9 @@ use crate::{
     types::{Hand, Tile},
 };
 
+use std::thread;
+use std::time::Duration;
+
 pub fn game_loop(
     table: &mut Hand,
     player_hand: &mut Hand,
@@ -14,8 +17,14 @@ pub fn game_loop(
     tile_pool: &mut Hand,
     player_turn_next: &mut bool,
 ) {
+    // Define the duration you want to wait
+    let wait_time = Duration::from_millis(2500); // Pauses for 1.5 seconds
+
     // Game loop: alternate turns until one hand is empty
     loop {
+        // Pause execution here
+        thread::sleep(wait_time);
+
         // Display current state at the start of each turn
         show_board(&table, &player_hand, &cpu_hand);
 
