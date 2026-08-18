@@ -4,8 +4,6 @@ mod copy_edges;
 mod cpu_turn;
 mod create_player_hand;
 mod create_tile_pool;
-mod decide_by_pips;
-mod decide_by_tiles;
 mod decide_winner;
 mod find_highest_tile_index;
 mod find_starter_tile;
@@ -39,6 +37,7 @@ fn main() {
     show_tiles(&player_hand);
     println!("Initial table:");
     show_tiles(&table);
+
     // Determine who plays next: the player who DID NOT have the starter plays next
     let mut player_turn_next: bool = !starter_was_player;
 
