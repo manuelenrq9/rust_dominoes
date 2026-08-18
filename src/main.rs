@@ -31,11 +31,6 @@ fn main() {
     let mut player_hand: Hand = create_player_hand(&mut tile_pool);
     let mut cpu_hand: Hand = create_player_hand(&mut tile_pool);
     let (starter_tile, starter_was_player) = find_starter_tile(&mut player_hand, &mut cpu_hand);
-    if starter_was_player {
-        println!("Starter tile was taken from your hand.");
-    } else {
-        println!("Starter tile was taken from the CPU hand.");
-    }
     let mut table: Hand = vec![starter_tile];
     println!("Starter tile placed on the table.");
     println!("CPU hand:");

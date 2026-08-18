@@ -18,7 +18,7 @@ pub fn game_loop(
     player_turn_next: &mut bool,
 ) {
     // Define the duration you want to wait
-    let wait_time = Duration::from_millis(2500); // Pauses for 1.5 seconds
+    let wait_time = Duration::from_millis(4500); // Pauses for 1.5 seconds
 
     // Game loop: alternate turns until one hand is empty
     loop {

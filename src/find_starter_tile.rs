@@ -32,5 +32,11 @@ pub fn find_starter_tile(hand1: &mut Hand, hand2: &mut Hand) -> (Tile, bool) {
         starter_was_hand1 = false;
     }
 
+    if starter_was_hand1 {
+        println!("Starter tile was taken from your hand.");
+    } else {
+        println!("Starter tile was taken from the CPU hand.");
+    }
+
     return (starter_tile, starter_was_hand1);
 }
